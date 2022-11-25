@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Ejercicio de Cumpleaños</h2>
+<div mat-dialog-content class="mat-typography">
+  <p>
+    ¿Cuantas personas eben estar en una reunión para estar seguros de que al menos dos de ellas cumplen años en el mismo
+    mes?
+  </p>
+
+  <mat-divider></mat-divider>
+
+  <div class="options-container">
+    <div class="select-input">
+      <mat-form-field appearance="outline">
+        <mat-label>Cantidad de Personas</mat-label>
+        <mat-select #selectedOption>
+          <mat-option *ngFor="let persona of data.info" [value]="persona">
+            {{ persona }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="options-grid">
+      <img src="../../assets/img/user.png" alt="" *ngFor="let item of [].constructor(selectedOption.value)"
+        style="width: 10%;" />
+    </div>
+  </div>
+
+  <p *ngIf="selectedOption.value > 1 && selectedOption.value < 13">Con esta respuesta es probable que hayan dos
+    personas que cumplan años en el mismo mes, sin embargo no tenemos la
+    certeza o garantía de que así sea, por lo que de acuerdo al principio de Dirichlet no es la respuesta correcta.</p>
+
+  <p *ngIf="selectedOption.value >= 13">Exacto! Al estar presentes mínimo 13 personas, con esto ya estamos seguros que
+    hay mas personas (palomas) que palomares (meses), con lo cual cumple con el principio de Dirichlet, y podemos
+    garantizar que con esta cantidad de personas, habrán al menos dos que cumplan en el mismo mes.</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onClick()">Cerrar</button>
+</div>

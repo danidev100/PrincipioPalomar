@@ -1,0 +1,15 @@
+.options-container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.options-grid {
+  flex-wrap: wrap;
+}
+
+.mat-raised-button {
+  width: 100%;
+}

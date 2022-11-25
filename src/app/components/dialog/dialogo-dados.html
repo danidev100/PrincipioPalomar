@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Ejercicio de Dados</h2>
+<div mat-dialog-content class="mat-typography">
+  <p>
+    ¿Cuántas veces se debe lanzar un dado para obtener la misma puntuación por lo menos dos veces?
+  </p>
+
+  <mat-divider></mat-divider>
+
+  <div class="options-container">
+    <div class="select-input">
+      <mat-form-field appearance="outline">
+        <mat-label>Número de Lanzamientos</mat-label>
+        <mat-select #selectedOption>
+          <mat-option *ngFor="let lanzamiento of data.info" [value]="lanzamiento">
+            {{ lanzamiento }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="options-grid">
+      <img src="../../assets/img/casino.png" alt="" *ngFor="let item of [].constructor(selectedOption.value)"
+        style="width: 10%;" />
+    </div>
+  </div>
+
+  <p *ngIf="selectedOption.value < 7">Para {{ selectedOption.value }} hay probabilidad tanto de que el dado caiga en el
+    mismo número dos
+    veces, como de que caiga en uno diferente, por lo tanto, no garantiza que se repita el número que cayo en el
+    lanzamiento anterior.</p>
+
+  <p *ngIf="selectedOption.value >= 7">Exacto! Cuando se obtienen {{ selectedOption.value }} o más lanzamientos, se
+    garantiza que al menos habrán dos lanzamientos que caigan en el mismo valor, dado que o ya se ocuparon todas las
+    opciones (palomares) o ya se repitio alguno.</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onClick()">Cerrar</button>
+</div>

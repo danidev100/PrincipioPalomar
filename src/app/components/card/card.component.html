@@ -1,0 +1,10 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title>{{ titulo }}</mat-card-title>
+    <mat-card-subtitle>{{ subTitulo }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="imgCard" [alt]="'Foto de ' + titulo">
+  <mat-card-actions>
+    <button mat-raised-button (click)="abrirDialogo(titulo)">Ver</button>
+  </mat-card-actions>
+</mat-card>
